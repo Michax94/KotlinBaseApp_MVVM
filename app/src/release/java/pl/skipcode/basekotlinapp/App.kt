@@ -4,7 +4,7 @@ import timber.log.Timber
 
 class App : BaseApplication() {
 
-//    override fun initTimber() {
-//        Timber.plant(ReleaseTree())
-//    }
+    override fun initTimber() {
+        Timber.plant(ReleaseTree())
+    }
 }

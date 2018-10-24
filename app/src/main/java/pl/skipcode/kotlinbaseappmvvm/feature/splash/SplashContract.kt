@@ -4,12 +4,16 @@ import pl.skipcode.kotlinbaseappmvvm.feature.commons.BaseContract
 
 interface SplashContract {
 
-    interface View : BaseContract.View
+    interface ActivityView : BaseContract.ActivityView
 
-    interface Router : BaseContract.Router
+    interface ViewModel : BaseContract.ViewModel
 
-    interface Presenter : BaseContract.Presenter {
-        fun visible()
-        fun hide()
+    interface Router : BaseContract.Router{
+        fun goToMainActivity()
+        fun goToAuthActivity()
+    }
+
+    interface Gear : BaseContract.Gear{
+        fun navigate(isLogin : Boolean)
     }
 }

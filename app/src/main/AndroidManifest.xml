@@ -23,12 +23,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.main.ui.MainActivity"
-            android:screenOrientation="portrait">
+            android:name=".feature.main.ui.MainActivity">
         </activity>
         <activity
-            android:name=".feature.auth.ui.AuthActivity"
-            android:screenOrientation="portrait">
+            android:name=".feature.auth.ui.AuthActivity">
         </activity>
 
     </application>

@@ -15,7 +15,7 @@ android {
         targetSdkVersion Versions.targetSdk
         versionCode Versions.versionCode
         versionName Versions.versionName
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -60,15 +60,18 @@ dependencies {
     implementation Libs.kotlinStdLib
 
     //Fabric
-//    implementation(Libs.crashlytics) {
-//        transitive = true;
-//    }
+    implementation(Libs.crashlytics) {
+        transitive = true
+    }
 
     //Timber
-//    implementation Libs.timber
+    implementation Libs.timber
 
     //Leakcanary
-//    debugImplementation Libs.leakcanary
+    debugImplementation Libs.leakcanary
+
+    //KTX
+    implementation Libs.ktxCore
 
     //Support
     implementation Libs.appCompat
@@ -76,12 +79,18 @@ dependencies {
     implementation Libs.fragment
     implementation Libs.design
 
+    //Lifecycle
+    implementation Libs.lifecycleViewModelKtx
+    implementation Libs.lifecycleExtensions
+    kapt Libs.lifecycleCompiler
+    testImplementation Libs.lifecycleTesting
+
     //Dagger
-//    implementation Libs.dagger2
-//    kapt Libs.dagger2Compiler
-//    implementation Libs.dagger2Android
-//    implementation Libs.dagger2AndroidSupport
-//    kapt Libs.dagger2Processor
+    implementation Libs.dagger2
+    kapt Libs.dagger2Compiler
+    implementation Libs.dagger2Android
+    implementation Libs.dagger2AndroidSupport
+    kapt Libs.dagger2Processor
 
     //RxJava
     implementation Libs.rxjava2RxAndroid
@@ -89,7 +98,7 @@ dependencies {
     implementation Libs.rxandroid
 
     //RxPermission
-//    implementation Libs.rxPermissions
+    implementation Libs.rxPermissions
 
     //Retrofit
     implementation Libs.retrofit

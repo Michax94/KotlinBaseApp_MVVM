@@ -14,15 +14,15 @@ object Versions {
     const val fragment = "1.0.0"
     const val constraintLayout = "1.1.3"
     const val multidex = "1.0.0"
+    const val ktx = "1.0.0"
+    const val lifecycle = "2.0.0"
 
     const val hawk = "2.0.1"
-
-//    const val lifecycle = "2.0.0"
 //    const val room = "2.0.0"
 //    const val anko = "0.10.7"
     const val support = "28.0.0"
     const val retrofit = "2.3.0"
-//    const val material = "1.0.0"
+    const val material = "1.0.0"
     const val leakcanary = "1.6.1"
     const val parceler = "1.1.11"
     const val okHttp = "3.8.0"
@@ -38,7 +38,7 @@ object Versions {
 
 object LibsPrefix {
 //    const val anko = "org.jetbrains.anko:anko-"
-//    const val lifecycle = "androidx.lifecycle:lifecycle-"
+    const val lifecycle = "androidx.lifecycle:lifecycle-"
 //    const val room = "androidx.room:room-"
     const val retrofit = "com.squareup.retrofit2:"
     const val okhttp3 = "com.squareup.okhttp3:"
@@ -60,19 +60,20 @@ object Libs {
 
     const val multidex = "com.android.support:multidex:${Versions.multidex}"
 
-    const val appCompat = "com.android.support:appcompat-v7:${Versions.support}"
-    const val constraintLayout = "com.android.support.constraint:constraint-layout:${Versions.constraintLayout}"
-    const val fragment = "com.android.support:support-fragment:${Versions.support}"
-    const val design = "com.android.support:design:${Versions.support}"
+    const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
+    const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+    const val design = "com.google.android.material:material:${Versions.material}"
 
 //    const val ankoSdk = "${LibsPrefix.anko}sdk${Versions.minSdk}:${Versions.anko}"
 //    const val ankoAppCompact = "${LibsPrefix.anko}appcompat-v7:${Versions.anko}"
 //    const val ankoSupportV4 = "${LibsPrefix.anko}support-v4:${Versions.anko}"
 
-//    const val lifecycleExtensions = "${LibsPrefix.lifecycle}extensions:${Versions.lifecycle}"
-//    const val lifecycleRuntime = "${LibsPrefix.lifecycle}runtime:${Versions.lifecycle}"
-//    const val lifecycleCompiler = "${LibsPrefix.lifecycle}compiler:${Versions.lifecycle}"
-//    const val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
+    const val lifecycleViewModelKtx = "${LibsPrefix.lifecycle}viewmodel-ktx:${Versions.lifecycle}"
+    const val lifecycleExtensions = "${LibsPrefix.lifecycle}extensions:${Versions.lifecycle}"
+    const val lifecycleCompiler = "${LibsPrefix.lifecycle}compiler:${Versions.lifecycle}"
+    const val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
 //
 //    const val roomRuntime = "${LibsPrefix.room}runtime:${Versions.room}"
 //    const val roomRxJava2 = "${LibsPrefix.room}rxjava2:${Versions.room}"

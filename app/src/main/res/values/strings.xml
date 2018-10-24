@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Base Kotlin App</string>
+    <string name="app_name">Base Kotlin MVVM App</string>
     <string name="btn_login">Login</string>
     <string name="validate_username_empty">Uzupełnij nazwe użytkownika</string>
     <string name="validate_username_too_short">Nazwa za krótka, min. 3 znaki</string>
