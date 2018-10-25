@@ -40,7 +40,7 @@ class AuthActivity : BaseActivity(), AuthContract.ActivityView {
     }
 
     private fun initObservers(){
-        viewModel?.getLoginResponseLiveData()?.observe(this, Observer(gear::doLoginResponse))
+        viewModel?.loginResponseLiveData?.observe(this, Observer(gear::doLoginResponse))
     }
 
     override fun showMessage(message : Int){

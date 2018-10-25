@@ -43,7 +43,7 @@ class DashboardFragment : BaseFragment(), DashboardContract.View{
     }
 
     private fun initObservers(){
-        viewModel?.getProfileResponseLiveData()?.observe(this, Observer(gear::doProfileResponse))
+        viewModel?.profileResponseLiveData?.observe(this, Observer(gear::doProfileResponse))
     }
 
     override fun setUsernameUI(username : String){

@@ -1,6 +1,6 @@
 package pl.skipcode.kotlinbaseappmvvm.feature.main
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import pl.skipcode.kotlinbaseappmvvm.feature.commons.BaseContract
 
 interface MainContract {
@@ -8,7 +8,7 @@ interface MainContract {
     interface ActivityView : BaseContract.ActivityView
 
     interface ViewModel : BaseContract.ViewModel{
-        fun getLogoutLiveData(): LiveData<Boolean>
+        val logoutLiveData: MutableLiveData<Boolean>
     }
 
     interface Router : BaseContract.Router{

@@ -1,6 +1,5 @@
 package pl.skipcode.kotlinbaseappmvvm.feature.splash.viewModel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
@@ -20,17 +19,13 @@ class SplashViewModel @Inject constructor(
         private const val TIMEOUT = 3000L
     }
 
-    private lateinit var isLoggedLiveData: MutableLiveData<Boolean>
+    override val isLoggedLiveData = MutableLiveData<Boolean>()
 
-    override fun initialize() = Unit
-
-    override fun getIsLoggedLiveData(): LiveData<Boolean>{
-        if(!::isLoggedLiveData.isInitialized){
-            isLoggedLiveData = MutableLiveData()
-            startTimer()
-        }
-        return isLoggedLiveData
+    init {
+        startTimer()
     }
+
+    override fun viewOnCreate() = Unit
 
     private fun startTimer(){
         compositeDisposable.add(

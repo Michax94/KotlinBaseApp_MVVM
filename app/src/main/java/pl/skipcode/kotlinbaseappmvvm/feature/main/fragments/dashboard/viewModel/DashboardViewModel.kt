@@ -1,6 +1,5 @@
 package pl.skipcode.kotlinbaseappmvvm.feature.main.fragments.dashboard.viewModel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.disposables.CompositeDisposable
 import pl.skipcode.kotlinbaseappmvvm.data.api.auth.ProfileResponse
@@ -19,18 +18,14 @@ class DashboardViewModel @Inject constructor(
         private val apiErrorMapper: ApiErrorMapper
 ) : BaseViewModel(compositeDisposable), DashboardContract.ViewModel {
 
-    private lateinit var profileResponseLiveData: MutableLiveData<ResponseLiveData<ProfileResponse>>
+    override var profileResponseLiveData = MutableLiveData<ResponseLiveData<ProfileResponse>>()
 
     var username : String? = null
 
-    override fun initialize() = Unit
+    override fun viewOnCreate() = Unit
 
-    fun getProfileResponseLiveData(): LiveData<ResponseLiveData<ProfileResponse>> {
-        if(!::profileResponseLiveData.isInitialized){
-            profileResponseLiveData = MutableLiveData()
-            callProfileRequest()
-        }
-        return profileResponseLiveData
+    init {
+        callProfileRequest()
     }
 
     private fun callProfileRequest() {

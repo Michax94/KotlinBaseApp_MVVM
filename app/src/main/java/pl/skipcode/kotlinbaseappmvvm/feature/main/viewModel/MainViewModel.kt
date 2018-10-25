@@ -1,6 +1,5 @@
 package pl.skipcode.kotlinbaseappmvvm.feature.main.viewModel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
@@ -13,20 +12,19 @@ class MainViewModel @Inject constructor(
         private val configuration: IConfiguration
 ) : ViewModel(), MainContract.ViewModel {
 
-    private lateinit var logoutLiveData: MutableLiveData<Boolean>
+    override val logoutLiveData = MutableLiveData<Boolean>()
 
-    override fun initialize(){
+    init {
+        initAuthorizationObservable()
+    }
+
+    override fun viewOnCreate() = Unit
+
+    private fun initAuthorizationObservable(){
         compositeDisposable.add(configuration.authorizationObservable()
                 .subscribe {
                     configuration.logout()
                     logoutLiveData.postValue(true)
                 })
-    }
-
-    override fun getLogoutLiveData(): LiveData<Boolean> {
-        if(!::logoutLiveData.isInitialized){
-            logoutLiveData = MutableLiveData()
-        }
-        return logoutLiveData
     }
 }

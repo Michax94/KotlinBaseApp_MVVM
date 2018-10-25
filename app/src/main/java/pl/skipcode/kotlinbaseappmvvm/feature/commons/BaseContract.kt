@@ -23,7 +23,7 @@ interface BaseContract {
     interface Gear
 
     interface ViewModel {
-        fun initialize()
+        fun viewOnCreate()
     }
 
     interface Router {

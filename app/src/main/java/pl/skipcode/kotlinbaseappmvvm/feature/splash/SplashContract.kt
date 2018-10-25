@@ -1,6 +1,6 @@
 package pl.skipcode.kotlinbaseappmvvm.feature.splash
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import pl.skipcode.kotlinbaseappmvvm.feature.commons.BaseContract
 
 interface SplashContract {
@@ -8,7 +8,7 @@ interface SplashContract {
     interface ActivityView : BaseContract.ActivityView
 
     interface ViewModel : BaseContract.ViewModel{
-        fun getIsLoggedLiveData(): LiveData<Boolean>
+        val isLoggedLiveData: MutableLiveData<Boolean>
     }
 
     interface Router : BaseContract.Router{

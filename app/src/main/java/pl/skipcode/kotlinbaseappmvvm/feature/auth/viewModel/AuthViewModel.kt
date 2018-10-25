@@ -1,6 +1,5 @@
 package pl.skipcode.kotlinbaseappmvvm.feature.auth.viewModel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import io.reactivex.disposables.CompositeDisposable
 import pl.skipcode.kotlinbaseappmvvm.data.liveData.ResponseLiveData
@@ -18,18 +17,11 @@ class AuthViewModel @Inject constructor(
         private val apiErrorMapper: ApiErrorMapper
 ) : BaseViewModel(compositeDisposable), AuthContract.ViewModel{
 
-    private lateinit var loginResponseLiveData: MutableLiveData<ResponseLiveData<Any?>>
+    override val loginResponseLiveData = MutableLiveData<ResponseLiveData<Any?>>()
 
     var username : String? = null
 
-    override fun initialize() = Unit
-
-    fun getLoginResponseLiveData(): LiveData<ResponseLiveData<Any?>> {
-        if(!::loginResponseLiveData.isInitialized){
-            loginResponseLiveData = MutableLiveData()
-        }
-        return loginResponseLiveData
-    }
+    override fun viewOnCreate() = Unit
 
     fun callLoginRequest() {
         compositeDisposable.add(

@@ -9,5 +9,5 @@ class AboutViewModel @Inject constructor(
         private val compositeDisposable: CompositeDisposable
 ) : BaseViewModel(compositeDisposable), AboutContract.ViewModel {
 
-    override fun initialize() = Unit
+    override fun viewOnCreate() = Unit
 }

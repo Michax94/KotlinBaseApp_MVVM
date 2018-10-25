@@ -1,5 +1,6 @@
 package pl.skipcode.kotlinbaseappmvvm.feature.auth
 
+import androidx.lifecycle.MutableLiveData
 import pl.skipcode.kotlinbaseappmvvm.data.liveData.ResponseLiveData
 import pl.skipcode.kotlinbaseappmvvm.feature.commons.BaseContract
 
@@ -9,7 +10,9 @@ interface AuthContract {
         fun showMessage(message : Int)
     }
 
-    interface ViewModel : BaseContract.ViewModel
+    interface ViewModel : BaseContract.ViewModel{
+        val loginResponseLiveData: MutableLiveData<ResponseLiveData<Any?>>
+    }
 
     interface Router : BaseContract.Router{
         fun goToMainActivity()

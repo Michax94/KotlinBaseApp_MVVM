@@ -33,7 +33,6 @@ class MainActivity : BaseActivity(), MainContract.ActivityView, HasSupportFragme
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = getViewModel(viewModelFactory)
-        viewModel?.initialize()
 
         initFragment()
         initObservers()
@@ -44,7 +43,7 @@ class MainActivity : BaseActivity(), MainContract.ActivityView, HasSupportFragme
     }
 
     private fun initObservers(){
-        viewModel?.getLogoutLiveData()?.observe(this, Observer {
+        viewModel?.logoutLiveData?.observe(this, Observer {
             gear.logout()
         })
     }
