@@ -17,6 +17,6 @@ interface SplashContract {
     }
 
     interface Gear : BaseContract.Gear{
-        fun navigate(isLogin : Boolean)
+        fun navigate(isLogged : Boolean)
     }
 }
