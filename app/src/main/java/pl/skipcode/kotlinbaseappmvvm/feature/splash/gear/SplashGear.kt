@@ -6,8 +6,8 @@ class SplashGear(
         private val router: SplashContract.Router
 ) : SplashContract.Gear{
 
-    override fun navigate(isLogin: Boolean) {
-        if(isLogin) router.goToMainActivity()
+    override fun navigate(isLogged: Boolean) {
+        if(isLogged) router.goToMainActivity()
         else router.goToAuthActivity()
     }
 }

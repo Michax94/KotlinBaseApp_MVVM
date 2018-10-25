@@ -4,11 +4,11 @@ import pl.skipcode.kotlinbaseappmvvm.data.api.auth.ProfileResponse
 import pl.skipcode.kotlinbaseappmvvm.data.liveData.ResponseLiveData
 import pl.skipcode.kotlinbaseappmvvm.feature.main.MainContract
 import pl.skipcode.kotlinbaseappmvvm.feature.main.fragments.dashboard.DashboardContract
-import pl.skipcode.kotlinbaseappmvvm.utils.configuration.ConfigurationInterface
+import pl.skipcode.kotlinbaseappmvvm.utils.configuration.IConfiguration
 
 class DashboardGear(
         private val view: DashboardContract.View,
-        private val configuration: ConfigurationInterface,
+        private val configuration: IConfiguration,
         private val router: DashboardContract.Router,
         private val routerMain: MainContract.Router
 ) : DashboardContract.Gear{

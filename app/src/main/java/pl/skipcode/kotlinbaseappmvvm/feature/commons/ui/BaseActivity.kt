@@ -6,13 +6,10 @@ import android.os.Parcelable
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
-import pl.skipcode.kotlinbaseappmvvm.R
 import pl.skipcode.kotlinbaseappmvvm.feature.commons.BaseContract
 
 
@@ -52,55 +49,21 @@ abstract class BaseActivity: AppCompatActivity(), BaseContract.ActivityView{
     ): T = ViewModelProviders.of(this, viewModelFactory)[T::class.java]
 
 
-    private fun getAnim(animType: ANIM) : List<Int> {
-        return when (animType) {
-            ANIM.FADE_IN -> listOf(R.anim.fade_in, R.anim.fade_out,
-                    R.anim.fade_in, R.anim.fade_out)
-            ANIM.NONE -> listOf()
-        }
-    }
-
     override fun setFragment(fragment: Fragment, animType: ANIM){
-        setFragmentExt(fragment, animType)
+        frameLayoutId?.let {
+            setFragment(fragment, it, animType)
+        }
     }
 
     override fun addFragment(fragment: Fragment, animType: ANIM){
-        addFragmentExt(fragment, animType)
-    }
-
-    override fun replaceFragment(fragment: Fragment, animType: ANIM){
-        replaceFragmentExt(fragment, animType)
-    }
-
-    private fun AppCompatActivity.setFragmentExt(fragment: Fragment, animType: ANIM){
-        if (frameLayoutId == null) return
-
-        while (supportFragmentManager.backStackEntryCount > 0) {
-            supportFragmentManager.popBackStackImmediate()
+        frameLayoutId?.let {
+            addFragment(fragment, it, animType)
         }
-        supportFragmentManager.inTransaction ({ replace(frameLayoutId!!, fragment) }, animType)
     }
 
-    private fun AppCompatActivity.addFragmentExt(fragment: Fragment, animType: ANIM){
-        if (frameLayoutId == null) return
-        val backStateName = fragment.javaClass.name
-        supportFragmentManager.inTransaction ({ add(frameLayoutId!!, fragment).addToBackStack(backStateName) }, animType)
-    }
-
-    private fun AppCompatActivity.replaceFragmentExt(fragment: Fragment, animType: ANIM) {
-        if (frameLayoutId == null) return
-        val backStateName = fragment.javaClass.name
-        supportFragmentManager.inTransaction ({ replace(frameLayoutId!!, fragment).addToBackStack(backStateName) }, animType)
-    }
-
-    private inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransaction, animType: ANIM) {
-        if (animType != ANIM.NONE) {
-            beginTransaction().func().commitAllowingStateLoss()
-        }else{
-            beginTransaction()
-                    .func()
-                    .setCustomAnimations(getAnim(animType)[0], getAnim(animType)[1], getAnim(animType)[2], getAnim(animType)[3])
-                    .commitAllowingStateLoss()
+    override fun pushFragment(fragment: Fragment, animType: ANIM){
+        frameLayoutId?.let {
+            pushFragment(fragment, it, animType)
         }
     }
 }

@@ -4,10 +4,10 @@ import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 import pl.skipcode.kotlinbaseappmvvm.BuildConfig
-import pl.skipcode.kotlinbaseappmvvm.utils.configuration.ConfigurationInterface
+import pl.skipcode.kotlinbaseappmvvm.utils.configuration.IConfiguration
 
 class RestInterceptor(
-        private val configuration: ConfigurationInterface
+        private val configuration: IConfiguration
 ) : Interceptor{
 
     companion object {

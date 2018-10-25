@@ -3,7 +3,7 @@ package pl.skipcode.kotlinbaseappmvvm.utils.configuration
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
-interface ConfigurationInterface {
+interface IConfiguration {
     fun isUserLoggedIn(): Boolean
     fun logout(): Unit
     var userToken: String?

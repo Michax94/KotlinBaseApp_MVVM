@@ -1,17 +1,16 @@
 package pl.skipcode.kotlinbaseappmvvm.utils.network.rest
 
-import com.google.gson.JsonElement
-import com.google.gson.JsonParser
+import com.google.gson.Gson
 import okhttp3.Interceptor
 import okhttp3.Response
-import pl.skipcode.kotlinbaseappmvvm.utils.configuration.ConfigurationInterface
-import java.lang.Exception
-import java.nio.charset.Charset
+import pl.skipcode.kotlinbaseappmvvm.data.api.error.ErrorResponse
+import pl.skipcode.kotlinbaseappmvvm.utils.configuration.IConfiguration
 import pl.skipcode.kotlinbaseappmvvm.utils.network.errors.ErrorStatus
 
 
 class ResponseInterceptor(
-        private val configuration: ConfigurationInterface
+        private val configuration: IConfiguration,
+        private val gson: Gson
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -25,32 +24,18 @@ class ResponseInterceptor(
 
         if (errorStatus >= 400) {
 
-            if (errorStatus == ErrorStatus.UNAUTHORIZED){
-                configuration.authorizationSubject.onNext(5)
+            if (errorStatus == ErrorStatus.UNAUTHORIZED.code){
+                configuration.authorizationSubject.onNext(ErrorStatus.UNAUTHORIZED.code)
             }
 
-            // Only intercept JSON type responses and ignore the rest.
-            if (body?.contentType() != null && body.contentType()?.subtype() != null && body.contentType()?.subtype()?.toLowerCase().equals("json")) {
-                try {
-                    val source = body.source()
-                    source.request(java.lang.Long.MAX_VALUE) // Buffer the entire body.
-                    val buffer = source.buffer()
-                    val charset = body.contentType()?.charset(Charset.forName("UTF-8"))
-                    // Clone the existing buffer is they can only read once so we still want to pass the original one to the chain.
-                    val json = buffer.clone().readString(charset)
-                    val obj = JsonParser().parse(json)
-                    // Capture error code an message.
-                    if (obj is JsonElement && obj.asJsonObject.has("message")) {
-                        val message = obj.asJsonObject.get("message").asString
-                        //todo
-                        errorCode = 100
-                    }
-                } catch (e: Exception) {
-                    throw ResponseExeption(errorCode, errorStatus)
-                }
+            body?.let {
+                val content = body.source().buffer().readUtf8()
+                val errorResponse = gson.fromJson(content, ErrorResponse::class.java)
+
+                throw ResponseException(errorCode, errorStatus, errorResponse.error)
             }
 
-            throw ResponseExeption(errorCode, errorStatus)
+            throw ResponseException(errorCode, errorStatus)
         }
 
         return response

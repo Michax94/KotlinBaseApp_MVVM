@@ -8,7 +8,7 @@ import pl.skipcode.kotlinbaseappmvvm.feature.main.fragments.dashboard.gear.Dashb
 import pl.skipcode.kotlinbaseappmvvm.feature.main.fragments.dashboard.navigation.DashboardRouter
 import pl.skipcode.kotlinbaseappmvvm.feature.main.fragments.dashboard.ui.DashboardFragment
 import pl.skipcode.kotlinbaseappmvvm.feature.main.ui.MainActivity
-import pl.skipcode.kotlinbaseappmvvm.utils.configuration.ConfigurationInterface
+import pl.skipcode.kotlinbaseappmvvm.utils.configuration.IConfiguration
 
 @Module
 class DashboardModule {
@@ -16,7 +16,7 @@ class DashboardModule {
     @Provides
     fun provideGear(
             fragment: DashboardFragment,
-            configuration: ConfigurationInterface,
+            configuration: IConfiguration,
             router: DashboardContract.Router,
             routerMain: MainContract.Router
     ): DashboardContract.Gear =

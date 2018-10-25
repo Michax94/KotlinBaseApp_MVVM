@@ -2,6 +2,7 @@ package pl.skipcode.kotlinbaseappmvvm.feature.main.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -21,6 +22,9 @@ class MainActivity : BaseActivity(), MainContract.ActivityView, HasSupportFragme
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var gear: MainContract.Gear
+
     override val layoutId: Int = R.layout.activity_main
     override val frameLayoutId: Int = R.id.fragmentContainer
 
@@ -30,11 +34,19 @@ class MainActivity : BaseActivity(), MainContract.ActivityView, HasSupportFragme
         super.onCreate(savedInstanceState)
         viewModel = getViewModel(viewModelFactory)
         viewModel?.initialize()
+
         initFragment()
+        initObservers()
     }
 
     private fun initFragment(){
         setFragment(DashboardFragment(), ANIM.FADE_IN)
+    }
+
+    private fun initObservers(){
+        viewModel?.getLogoutLiveData()?.observe(this, Observer {
+            gear.logout()
+        })
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector

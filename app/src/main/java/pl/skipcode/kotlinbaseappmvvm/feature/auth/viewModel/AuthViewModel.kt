@@ -6,15 +6,16 @@ import io.reactivex.disposables.CompositeDisposable
 import pl.skipcode.kotlinbaseappmvvm.data.liveData.ResponseLiveData
 import pl.skipcode.kotlinbaseappmvvm.feature.auth.AuthContract
 import pl.skipcode.kotlinbaseappmvvm.feature.commons.viewModel.BaseViewModel
-import pl.skipcode.kotlinbaseappmvvm.utils.configuration.ConfigurationInterface
-import pl.skipcode.kotlinbaseappmvvm.utils.network.errors.ErrorHelper
+import pl.skipcode.kotlinbaseappmvvm.utils.configuration.IConfiguration
+import pl.skipcode.kotlinbaseappmvvm.utils.network.errors.ApiErrorMapper
 import pl.skipcode.kotlinbaseappmvvm.utils.repository.auth.AuthRepoInterface
 import javax.inject.Inject
 
 class AuthViewModel @Inject constructor(
         private val authRepo: AuthRepoInterface,
-        private val configuration: ConfigurationInterface,
-        private val compositeDisposable: CompositeDisposable
+        private val configuration: IConfiguration,
+        private val compositeDisposable: CompositeDisposable,
+        private val apiErrorMapper: ApiErrorMapper
 ) : BaseViewModel(compositeDisposable), AuthContract.ViewModel{
 
     private lateinit var loginResponseLiveData: MutableLiveData<ResponseLiveData<Any?>>
@@ -40,8 +41,7 @@ class AuthViewModel @Inject constructor(
                                     loginResponseLiveData.postValue(ResponseLiveData(correct = true))
                                 },
                                 {
-                                    val error = ErrorHelper().getError(it)
-                                    loginResponseLiveData.postValue(ResponseLiveData(correct = false, message = error.message))
+                                    loginResponseLiveData.postValue(ResponseLiveData(correct = false, message = apiErrorMapper.getError(it).message))
                                 }
                         )
         )

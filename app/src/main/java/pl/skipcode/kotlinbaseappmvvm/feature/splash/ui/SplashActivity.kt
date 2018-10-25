@@ -29,7 +29,6 @@ class SplashActivity : BaseActivity(), SplashContract.ActivityView {
 
     override fun onResume() {
         super.onResume()
-
-        viewModel?.getIsLoginLiveData()?.observe(this, Observer(gear::navigate))
+        viewModel?.getIsLoggedLiveData()?.observe(this, Observer(gear::navigate))
     }
 }

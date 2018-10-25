@@ -15,7 +15,7 @@ interface BaseContract {
         )
         fun setFragment(fragment: Fragment, animType: BaseActivity.ANIM)
         fun addFragment(fragment: Fragment, animType: BaseActivity.ANIM)
-        fun replaceFragment(fragment: Fragment, animType: BaseActivity.ANIM)
+        fun pushFragment(fragment: Fragment, animType: BaseActivity.ANIM)
     }
 
     interface View

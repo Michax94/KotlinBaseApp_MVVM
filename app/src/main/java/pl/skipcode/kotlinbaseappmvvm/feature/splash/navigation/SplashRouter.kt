@@ -5,9 +5,8 @@ import pl.skipcode.kotlinbaseappmvvm.feature.auth.ui.AuthActivity
 import pl.skipcode.kotlinbaseappmvvm.feature.commons.navigation.BaseRouter
 import pl.skipcode.kotlinbaseappmvvm.feature.main.ui.MainActivity
 import pl.skipcode.kotlinbaseappmvvm.feature.splash.SplashContract
-import javax.inject.Inject
 
-class SplashRouter @Inject constructor(
+class SplashRouter (
         private val activityView: SplashContract.ActivityView
 ) : BaseRouter(activityView), SplashContract.Router {
 

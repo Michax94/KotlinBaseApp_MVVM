@@ -6,30 +6,30 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import pl.skipcode.kotlinbaseappmvvm.feature.commons.viewModel.BaseViewModel
 import pl.skipcode.kotlinbaseappmvvm.feature.splash.SplashContract
-import pl.skipcode.kotlinbaseappmvvm.utils.configuration.ConfigurationInterface
+import pl.skipcode.kotlinbaseappmvvm.utils.configuration.IConfiguration
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(
-        private val configuration: ConfigurationInterface,
+        private val configuration: IConfiguration,
         private val compositeDisposable: CompositeDisposable
 ) : BaseViewModel(compositeDisposable), SplashContract.ViewModel{
 
     companion object {
-        const val TIMEOUT = 3000L
+        private const val TIMEOUT = 3000L
     }
 
-    private lateinit var isLoginLiveData: MutableLiveData<Boolean>
+    private lateinit var isLoggedLiveData: MutableLiveData<Boolean>
 
     override fun initialize() = Unit
 
-    fun getIsLoginLiveData(): LiveData<Boolean>{
-        if(!::isLoginLiveData.isInitialized){
-            isLoginLiveData = MutableLiveData()
+    override fun getIsLoggedLiveData(): LiveData<Boolean>{
+        if(!::isLoggedLiveData.isInitialized){
+            isLoggedLiveData = MutableLiveData()
             startTimer()
         }
-        return isLoginLiveData
+        return isLoggedLiveData
     }
 
     private fun startTimer(){
@@ -37,7 +37,7 @@ class SplashViewModel @Inject constructor(
                 Observable.just(Unit)
                         .delay(TIMEOUT, TimeUnit.MILLISECONDS)
                         .subscribe(
-                                { isLoginLiveData.postValue(configuration.isUserLoggedIn()) },
+                                { isLoggedLiveData.postValue(configuration.isUserLoggedIn()) },
                                 { Timber.e(it) }
                         )
         )

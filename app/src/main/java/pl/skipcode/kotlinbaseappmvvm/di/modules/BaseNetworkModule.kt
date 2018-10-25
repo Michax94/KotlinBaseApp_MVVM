@@ -7,7 +7,7 @@ import dagger.Provides
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import pl.skipcode.kotlinbaseappmvvm.BuildConfig
-import pl.skipcode.kotlinbaseappmvvm.utils.configuration.ConfigurationInterface
+import pl.skipcode.kotlinbaseappmvvm.utils.configuration.IConfiguration
 import pl.skipcode.kotlinbaseappmvvm.utils.network.helpers.DateDeserializer
 import pl.skipcode.kotlinbaseappmvvm.utils.network.helpers.DateSerializer
 import pl.skipcode.kotlinbaseappmvvm.utils.network.rest.ResponseInterceptor
@@ -26,15 +26,19 @@ abstract class BaseNetworkModule {
 
     @Named("rest")
     @Provides
-    fun provideRestInterceptor(configuration: ConfigurationInterface): Interceptor =
+    fun provideRestInterceptor(configuration: IConfiguration): Interceptor =
             RestInterceptor(configuration)
 
     @Named("response")
     @Provides
     fun provideResponseInterceptor(
-            configuration: ConfigurationInterface
+            configuration: IConfiguration,
+            gson: Gson
     ): Interceptor =
-            ResponseInterceptor(configuration)
+            ResponseInterceptor(
+                    configuration,
+                    gson
+            )
 
     @Singleton
     @Provides

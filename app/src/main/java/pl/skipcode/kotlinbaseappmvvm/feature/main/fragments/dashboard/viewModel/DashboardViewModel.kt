@@ -7,15 +7,16 @@ import pl.skipcode.kotlinbaseappmvvm.data.api.auth.ProfileResponse
 import pl.skipcode.kotlinbaseappmvvm.data.liveData.ResponseLiveData
 import pl.skipcode.kotlinbaseappmvvm.feature.commons.viewModel.BaseViewModel
 import pl.skipcode.kotlinbaseappmvvm.feature.main.fragments.dashboard.DashboardContract
-import pl.skipcode.kotlinbaseappmvvm.utils.configuration.ConfigurationInterface
-import pl.skipcode.kotlinbaseappmvvm.utils.network.errors.ErrorHelper
+import pl.skipcode.kotlinbaseappmvvm.utils.configuration.IConfiguration
+import pl.skipcode.kotlinbaseappmvvm.utils.network.errors.ApiErrorMapper
 import pl.skipcode.kotlinbaseappmvvm.utils.repository.auth.AuthRepoInterface
 import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
         private val authRepo: AuthRepoInterface,
-        private val configuration: ConfigurationInterface,
-        private val compositeDisposable: CompositeDisposable
+        private val configuration: IConfiguration,
+        private val compositeDisposable: CompositeDisposable,
+        private val apiErrorMapper: ApiErrorMapper
 ) : BaseViewModel(compositeDisposable), DashboardContract.ViewModel {
 
     private lateinit var profileResponseLiveData: MutableLiveData<ResponseLiveData<ProfileResponse>>
@@ -40,8 +41,10 @@ class DashboardViewModel @Inject constructor(
                                     profileResponseLiveData.postValue(ResponseLiveData(it,true))
                                 },
                                 {
-                                    val error = ErrorHelper().getError(it)
-                                    profileResponseLiveData.postValue(ResponseLiveData(correct = false, message = error.message))
+                                    profileResponseLiveData.postValue(ResponseLiveData(
+                                            correct = false,
+                                            message = apiErrorMapper.getError(it).message)
+                                    )
                                 }
                         )
         )

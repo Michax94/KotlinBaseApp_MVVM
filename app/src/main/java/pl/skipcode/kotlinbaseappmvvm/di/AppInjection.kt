@@ -9,10 +9,7 @@ import dagger.Provides
 import dagger.android.AndroidInjectionModule
 import io.reactivex.disposables.CompositeDisposable
 import pl.skipcode.kotlinbaseappmvvm.BaseApplication
-import pl.skipcode.kotlinbaseappmvvm.di.modules.ConfigurationModule
-import pl.skipcode.kotlinbaseappmvvm.di.modules.NetworkModule
-import pl.skipcode.kotlinbaseappmvvm.di.modules.RepositoryModule
-import pl.skipcode.kotlinbaseappmvvm.di.modules.ServiceModule
+import pl.skipcode.kotlinbaseappmvvm.di.modules.*
 import javax.inject.Singleton
 
 @Module
@@ -36,7 +33,8 @@ class AppModule {
     RepositoryModule::class,
     ConfigurationModule::class,
     ActivityBinderModule::class,
-    ViewModelBinderModule::class
+    ViewModelBinderModule::class,
+    HelperModule::class
 ])
 interface AppComponent {
 
