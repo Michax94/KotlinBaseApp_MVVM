@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
-class ConfigurationImpl : IConfiguration {
+class Configuration : IConfiguration {
 
     companion object {
         const val PREFS_KEY_USERNAME = "UserName"

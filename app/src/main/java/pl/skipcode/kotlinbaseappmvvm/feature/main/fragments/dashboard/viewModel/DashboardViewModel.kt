@@ -8,11 +8,11 @@ import pl.skipcode.kotlinbaseappmvvm.feature.commons.viewModel.BaseViewModel
 import pl.skipcode.kotlinbaseappmvvm.feature.main.fragments.dashboard.DashboardContract
 import pl.skipcode.kotlinbaseappmvvm.utils.configuration.IConfiguration
 import pl.skipcode.kotlinbaseappmvvm.utils.network.errors.ApiErrorMapper
-import pl.skipcode.kotlinbaseappmvvm.utils.repository.auth.AuthRepoInterface
+import pl.skipcode.kotlinbaseappmvvm.utils.repository.auth.IAuthRepository
 import javax.inject.Inject
 
 class DashboardViewModel @Inject constructor(
-        private val authRepo: AuthRepoInterface,
+        private val authRepo: IAuthRepository,
         private val configuration: IConfiguration,
         private val compositeDisposable: CompositeDisposable,
         private val apiErrorMapper: ApiErrorMapper

@@ -38,6 +38,13 @@ class MainActivity : BaseActivity(), MainContract.ActivityView, HasSupportFragme
         initObservers()
     }
 
+    override fun onResume() {
+        super.onResume()
+        initPermissions()
+    }
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
+
     private fun initFragment(){
         setFragment(DashboardFragment(), ANIM.FADE_IN)
     }
@@ -48,5 +55,9 @@ class MainActivity : BaseActivity(), MainContract.ActivityView, HasSupportFragme
         })
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentInjector
+    private fun initPermissions(){
+        gear.getCameraPermissionObservable()?.let {
+            viewModel?.checkCameraPermission(it)
+        }
+    }
 }

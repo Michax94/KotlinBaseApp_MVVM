@@ -3,8 +3,8 @@ package pl.skipcode.kotlinbaseappmvvm.di.modules
 import dagger.Module
 import dagger.Provides
 import pl.skipcode.kotlinbaseappmvvm.utils.network.services.AuthService
-import pl.skipcode.kotlinbaseappmvvm.utils.repository.auth.AuthRepo
-import pl.skipcode.kotlinbaseappmvvm.utils.repository.auth.AuthRepoInterface
+import pl.skipcode.kotlinbaseappmvvm.utils.repository.auth.AuthRepository
+import pl.skipcode.kotlinbaseappmvvm.utils.repository.auth.IAuthRepository
 
 @Module
 class RepositoryModule {
@@ -12,8 +12,8 @@ class RepositoryModule {
     @Provides
     fun provideRepository(
             service: AuthService
-    ): AuthRepoInterface =
-            AuthRepo(
+    ): IAuthRepository =
+            AuthRepository(
                     service
             )
 

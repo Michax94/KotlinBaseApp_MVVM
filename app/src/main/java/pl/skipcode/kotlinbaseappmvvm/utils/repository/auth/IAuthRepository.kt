@@ -4,7 +4,7 @@ import io.reactivex.Single
 import pl.skipcode.kotlinbaseappmvvm.data.api.auth.LoginResponse
 import pl.skipcode.kotlinbaseappmvvm.data.api.auth.ProfileResponse
 
-interface AuthRepoInterface {
+interface IAuthRepository {
 
     fun loginUser(username : String?, key : String) : Single<LoginResponse>
 

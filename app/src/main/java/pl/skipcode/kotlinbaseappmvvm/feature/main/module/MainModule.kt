@@ -6,16 +6,22 @@ import pl.skipcode.kotlinbaseappmvvm.feature.main.MainContract
 import pl.skipcode.kotlinbaseappmvvm.feature.main.gear.MainGear
 import pl.skipcode.kotlinbaseappmvvm.feature.main.navigation.MainRouter
 import pl.skipcode.kotlinbaseappmvvm.feature.main.ui.MainActivity
+import pl.skipcode.kotlinbaseappmvvm.utils.tools.permissions.IPermissionsHelper
+import pl.skipcode.kotlinbaseappmvvm.utils.tools.permissions.PermissionsHelper
 
 @Module
 class MainModule {
 
     @Provides
     fun provideGear(
-            router: MainContract.Router
+            activity: MainActivity,
+            router: MainContract.Router,
+            permissionsHelper: IPermissionsHelper
     ): MainContract.Gear =
             MainGear(
-                    router
+                    activity,
+                    router,
+                    permissionsHelper
             )
 
     @Provides
@@ -26,4 +32,9 @@ class MainModule {
                     activity
             )
 
+    @Provides
+    fun providePermissionsHelper(
+            activity: MainActivity
+    ): IPermissionsHelper =
+            PermissionsHelper(activity)
 }

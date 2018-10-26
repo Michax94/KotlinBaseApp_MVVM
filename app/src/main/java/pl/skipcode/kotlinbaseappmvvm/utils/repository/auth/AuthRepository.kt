@@ -7,9 +7,9 @@ import pl.skipcode.kotlinbaseappmvvm.data.api.auth.LoginResponse
 import pl.skipcode.kotlinbaseappmvvm.data.api.auth.ProfileResponse
 import pl.skipcode.kotlinbaseappmvvm.utils.network.services.AuthService
 
-class AuthRepo(
+class AuthRepository(
        private val authService: AuthService
-) : AuthRepoInterface{
+) : IAuthRepository{
 
     override fun loginUser(username: String?, key: String): Single<LoginResponse> {
         return authService.loginUser(username, key)

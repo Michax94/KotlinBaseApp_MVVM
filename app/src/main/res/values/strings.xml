@@ -8,4 +8,8 @@
     <string name="error_api_connection_error">Błąd połączenia</string>
     <string name="error_api_unauthorized">Brak uprawnień</string>
     <string name="error_api_not_found">Nic nie znaleziono</string>
+    <string name="ok">OK</string>
+    <string name="settings">Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="permission_rationale">Aby korzystać z tej funkcji aplikacji udziel jej odpowiednich pozwoleń</string>
 </resources>
