@@ -119,6 +119,7 @@ dependencies {
     androidTestImplementation Libs.testCore
     androidTestImplementation Libs.runner
     androidTestImplementation Libs.junit
+    androidTestImplementation Libs.rules
     androidTestImplementation Libs.mockito
     androidTestImplementation Libs.espresso
     testImplementation Libs.lifecycleTesting

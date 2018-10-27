@@ -32,6 +32,7 @@ object Versions {
     const val testCore = "1.0.0"
     const val junit = "1.0.0"
     const val runner = "1.1.0"
+    const val rules = "1.1.0"
     const val mockito = "2.23.0"
 }
 
@@ -93,6 +94,7 @@ object Libs {
 
     const val testCore = "androidx.test:core:${Versions.testCore}"
     const val runner = "androidx.test:runner:${Versions.runner}"
+    const val rules = "androidx.test:rules:${Versions.rules}"
     const val junit = "androidx.test.ext:junit:${Versions.junit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
