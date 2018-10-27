@@ -9,7 +9,9 @@ class AuthGear(
         ) : AuthContract.Gear{
 
     override fun doLoginResponse(response : ResponseLiveData<Any?>){
-        if(response.message != null) activityView.showMessage(response.message)
+        response.message?.let {
+            activityView.showMessage(it)
+        }
 
         if(response.correct){
             router.goToMainActivity()

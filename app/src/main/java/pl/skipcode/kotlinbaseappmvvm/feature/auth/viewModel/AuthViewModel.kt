@@ -19,11 +19,11 @@ class AuthViewModel @Inject constructor(
 
     override val loginResponseLiveData = MutableLiveData<ResponseLiveData<Any?>>()
 
-    var username : String? = null
+    override var username : String? = null
 
     override fun viewOnCreate() = Unit
 
-    fun callLoginRequest() {
+    override fun callLoginRequest() {
         compositeDisposable.add(
                 authRepo.loginUser(username, "K2I0-I5HG-XRQT-WNXG")
                         .subscribe(

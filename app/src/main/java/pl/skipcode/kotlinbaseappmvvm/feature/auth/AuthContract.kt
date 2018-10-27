@@ -12,6 +12,8 @@ interface AuthContract {
 
     interface ViewModel : BaseContract.ViewModel{
         val loginResponseLiveData: MutableLiveData<ResponseLiveData<Any?>>
+        var username : String?
+        fun callLoginRequest()
     }
 
     interface Router : BaseContract.Router{
