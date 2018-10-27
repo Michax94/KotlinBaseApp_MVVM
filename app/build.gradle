@@ -53,6 +53,7 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    useLibrary 'android.test.runner'
 }
 
 dependencies {
@@ -118,6 +119,6 @@ dependencies {
 
     testImplementation Libs.junit
     testImplementation Libs.mockito
-    androidTestImplementation Libs.runner
+//    androidTestImplementation Libs.runner
     androidTestImplementation Libs.espresso
 }

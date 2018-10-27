@@ -26,7 +26,7 @@ object Versions {
     const val leakcanary = "1.6.1"
     const val parceler = "1.1.11"
     const val okHttp = "3.8.0"
-    const val espresso = "3.0.2"
+    const val espresso = "3.1.0"
     const val rxjava = "2.0.2"
     const val rxandroid = "1.2.1"
     const val rxpermissions = "0.10.2"
@@ -105,8 +105,8 @@ object Libs {
     const val parcelerProcessor = "${LibsPrefix.parceler}:${Versions.parceler}"
 
     const val junit = "junit:junit:${Versions.junit}"
-    const val runner = "com.android.support.test:runner:${Versions.runner}"
-    const val espresso = "com.android.support.test.espresso:espresso-core:${Versions.espresso}"
+//    const val runner = "com.android.support.test:runner:${Versions.runner}"
+    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
 }
 
