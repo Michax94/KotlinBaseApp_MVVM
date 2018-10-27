@@ -84,7 +84,6 @@ dependencies {
     implementation Libs.lifecycleViewModelKtx
     implementation Libs.lifecycleExtensions
     kapt Libs.lifecycleCompiler
-    testImplementation Libs.lifecycleTesting
 
     //Dagger
     implementation Libs.dagger2
@@ -117,8 +116,10 @@ dependencies {
     implementation Libs.parceler
     kapt Libs.parcelerProcessor
 
-    testImplementation Libs.junit
-    testImplementation Libs.mockito
-//    androidTestImplementation Libs.runner
+    androidTestImplementation Libs.testCore
+    androidTestImplementation Libs.runner
+    androidTestImplementation Libs.junit
+    androidTestImplementation Libs.mockito
     androidTestImplementation Libs.espresso
+    testImplementation Libs.lifecycleTesting
 }

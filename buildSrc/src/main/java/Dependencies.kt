@@ -18,9 +18,6 @@ object Versions {
     const val lifecycle = "2.0.0"
 
     const val hawk = "2.0.1"
-//    const val room = "2.0.0"
-//    const val anko = "0.10.7"
-    const val support = "28.0.0"
     const val retrofit = "2.3.0"
     const val material = "1.0.0"
     const val leakcanary = "1.6.1"
@@ -31,15 +28,15 @@ object Versions {
     const val rxandroid = "1.2.1"
     const val rxpermissions = "0.10.2"
     const val dagger2 = "2.12"
-    const val junit = "4.12"
-    const val runner = "1.0.2"
+
+    const val testCore = "1.0.0"
+    const val junit = "1.0.0"
+    const val runner = "1.1.0"
     const val mockito = "2.23.0"
 }
 
 object LibsPrefix {
-//    const val anko = "org.jetbrains.anko:anko-"
     const val lifecycle = "androidx.lifecycle:lifecycle-"
-//    const val room = "androidx.room:room-"
     const val retrofit = "com.squareup.retrofit2:"
     const val okhttp3 = "com.squareup.okhttp3:"
     const val reactivex = "io.reactivex"
@@ -66,19 +63,9 @@ object Libs {
     const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
     const val design = "com.google.android.material:material:${Versions.material}"
 
-//    const val ankoSdk = "${LibsPrefix.anko}sdk${Versions.minSdk}:${Versions.anko}"
-//    const val ankoAppCompact = "${LibsPrefix.anko}appcompat-v7:${Versions.anko}"
-//    const val ankoSupportV4 = "${LibsPrefix.anko}support-v4:${Versions.anko}"
-
     const val lifecycleViewModelKtx = "${LibsPrefix.lifecycle}viewmodel-ktx:${Versions.lifecycle}"
     const val lifecycleExtensions = "${LibsPrefix.lifecycle}extensions:${Versions.lifecycle}"
     const val lifecycleCompiler = "${LibsPrefix.lifecycle}compiler:${Versions.lifecycle}"
-    const val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
-//
-//    const val roomRuntime = "${LibsPrefix.room}runtime:${Versions.room}"
-//    const val roomRxJava2 = "${LibsPrefix.room}rxjava2:${Versions.room}"
-//    const val roomCompiler = "${LibsPrefix.room}compiler:${Versions.room}"
-//    const val roomTesting = "androidx.room:room-testing:${Versions.room}"
 
     const val retrofit = "${LibsPrefix.retrofit}retrofit:${Versions.retrofit}"
     const val retrofitConverterGson = "${LibsPrefix.retrofit}converter-gson:${Versions.retrofit}"
@@ -104,10 +91,12 @@ object Libs {
     const val parceler = "${LibsPrefix.parceler}-api:${Versions.parceler}"
     const val parcelerProcessor = "${LibsPrefix.parceler}:${Versions.parceler}"
 
-    const val junit = "junit:junit:${Versions.junit}"
-//    const val runner = "com.android.support.test:runner:${Versions.runner}"
+    const val testCore = "androidx.test:core:${Versions.testCore}"
+    const val runner = "androidx.test:runner:${Versions.runner}"
+    const val junit = "androidx.test.ext:junit:${Versions.junit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     const val mockito = "org.mockito:mockito-core:${Versions.mockito}"
+    const val lifecycleTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
 }
 
 object ClassPaths {
